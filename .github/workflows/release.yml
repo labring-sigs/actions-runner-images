@@ -63,7 +63,6 @@ jobs:
           outputs: type=image,"name=${{ env.GHCR_REPO }}${{ env.DOCKERHUB_REPO && format(',{0}', env.DOCKERHUB_REPO) }}${{ env.ALIYUN_REPO && format(',{0}', env.ALIYUN_REPO) }}",name-canonical=true,push-by-digest=${{ github.event_name != 'pull_request' && github.actor != 'dependabot[bot]' }},push=${{ github.event_name != 'pull_request' && github.actor != 'dependabot[bot]' }}
 
       - name: Export digest
-        working-directory: core
         run: |
           mkdir -p ${{ runner.temp }}/digests
           digest="${{ steps.build.outputs.digest }}"
