@@ -18,3 +18,5 @@ RUN sealos version
 
 COPY INSTALL_skopeo.sh /opt/INSTALL_skopeo.sh
 RUN bash /opt/INSTALL_skopeo.sh
+
+USER runner
