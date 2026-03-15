@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7-labs
-FROM ghcr.io/actions/actions-runner:latest
+FROM ghcr.io/actions/actions-runner:2.332.0
 LABEL authors="labring-sigs"
 
 USER root
