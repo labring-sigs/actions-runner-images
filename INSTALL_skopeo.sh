@@ -9,4 +9,4 @@ rm -rf skopeo_1.20.0-1_amd64.deb
 rm -rf extract
 skopeo --version
 
-curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
+curl https://gosspublic.alicdn.com/ossutil/install.sh | bash
