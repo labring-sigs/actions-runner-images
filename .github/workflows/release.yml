@@ -1,6 +1,9 @@
 name: Release
 
 on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
   push:
     branches:
       - "**"
@@ -23,11 +26,13 @@ jobs:
   build-docker-images:
     name: Build Docker Images
     permissions:
+      contents: read
       packages: write
     strategy:
       matrix:
         include:
           - arch: amd64
+            runs-on: ubuntu-24.04
 #          - arch: arm64
 #            runs-on: ubuntu-24.04-arm
     runs-on: ${{ matrix.runs-on || 'ubuntu-24.04' }}
@@ -115,6 +120,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
